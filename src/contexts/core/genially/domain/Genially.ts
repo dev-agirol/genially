@@ -17,13 +17,14 @@ export default class Genially {
     return this._id;
   }
 
-  set id(id: string) {
-    this._id = id;
-  }
+  // set id(id: string) {
+  //   this._id = id;
+  // }
 
   get name(): string {
     return this._name;
   }
+
   set name(name: string) {
     this._name = name;
   }
@@ -51,6 +52,7 @@ export default class Genially {
   set modifiedAt(modifiedAt: Date) {
     this._modifiedAt = modifiedAt;
   }
+
   get deletedAt(): Date {
     return this._deletedAt;
   }

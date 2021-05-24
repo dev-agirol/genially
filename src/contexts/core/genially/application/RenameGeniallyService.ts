@@ -10,8 +10,10 @@ export default class RenameGeniallyService {
       throw new Error("Genially not found.");
     }
 
-    const update = { ...genially, name, modifiedAt: new Date() } as Genially;
-    const updated = await this.repository.update(update, id);
+    // const update = { ...genially, name, modifiedAt: new Date() } as Genially;
+    genially.name = name;
+    genially.modifiedAt = new Date();
+    const updated = await this.repository.update(genially, id);
 
     return updated;
   }

@@ -7,12 +7,14 @@ export default class DeleteGeniallyService {
   public async execute(id: string): Promise<Genially> {
     const genially = await this.repository.find(id);
 
-    if (!genially) {
+    if (!genially || genially.deletedAt) {
       throw new Error("Genially not found.");
     }
 
-    const update = { ...genially, deletedAt: new Date() } as Genially;
-    const updated = await this.repository.update(update, id);
+
+    genially.deletedAt = new Date();
+
+    const updated = await this.repository.update(genially, id);
 
     return updated;
   }
